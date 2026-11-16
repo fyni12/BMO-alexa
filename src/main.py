@@ -1,12 +1,21 @@
 import argparse
 from fastapi import FastAPI
 import uvicorn
+import src.services as procesar_alarma
+from pydantic import BaseModel
 
 app = FastAPI()
+
+class AlarmaRequest(BaseModel):
+    texto: str
 
 @app.get("/health")
 def health_status():
     return {"Status": "Ok"}
+
+@app.post("/alarma")
+async def ejecutar_alarma(peticion: AlarmaRequest):
+    return await procesar_alarma(peticion.texto)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Iniciar servidor FastAPI")
