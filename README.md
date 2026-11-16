@@ -43,6 +43,10 @@ abrir el puerto
 
 ```
  New-NetFirewallRule -DisplayName "FastAPI Docker 8000" -Direction Inbound -LocalPort 8000 -Protocol TCP -Action Allow
+
+
+#solo para red privada (creo)
+ Set-NetFirewallRule -DisplayName "FastAPI Docker 8000" -RemoteAddress "192.168.137.0/24"
 ```
 
 cerrar el puerto
