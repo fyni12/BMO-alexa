@@ -25,12 +25,27 @@ luego para activar el venv
 para ejecutar la aplicacion
 
 ```
-python -m src.main
+python -m src.main --host 0.0.0.0 --port 8000
 ```
 
 
 en caso de querer ejecutar su contenedor haremos
 
 ```
-docker compose up
+docker compose up -d --build
+```
+
+
+# Despliegue local
+
+para realizar un despliegue local es necesario abrir un puerto 
+abrir el puerto
+
+```
+ New-NetFirewallRule -DisplayName "FastAPI Docker 8000" -Direction Inbound -LocalPort 8000 -Protocol TCP -Action Allow
+```
+
+cerrar el puerto
+```
+Remove-NetFirewallRule -DisplayName "FastAPI Docker 8000"
 ```

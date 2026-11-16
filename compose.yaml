@@ -5,7 +5,7 @@ services:
       dockerfile: src/Dockerfile
     container_name: bmo-api
     ports:
-      - "${HOST_PORT:-8000}:8000"
+      - "192.168.137.1:${HOST_PORT:-8000}:8000"
     env_file:
       - .env
     environment:
